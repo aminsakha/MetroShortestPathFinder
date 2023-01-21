@@ -1,3 +1,157 @@
 <resources>
+
     <string name="app_name">MetroShortestPathFinder</string>
+    <string-array name="firstLine">
+        <item>تجریش</item>
+        <item>قیطریه</item>
+        <item>شهید صدر</item>
+        <item>قلهک</item>
+        <item>دکتر شریعتی</item>
+        <item>میرداماد</item>
+        <item>شهید حقانی</item>
+        <item>شهید همت</item>
+        <item>مصلی امام خمینی</item>
+        <item>شهید بهشتی</item>
+        <item>شهید مفتح</item>
+        <item>شهدای هفتم تیر</item>
+        <item>طالقانی</item>
+        <item>دروازه دولت</item>
+        <item>سعدی</item>
+        <item>امام خمینی</item>
+        <item>پانزده خرداد</item>
+        <item>خیام</item>
+        <item>میدان محمدیه</item>
+        <item>شوش</item>
+        <item>پایانه جنوب</item>
+        <item>شهید بخارایی</item>
+        <item>علی آباد</item>
+        <item>جوانمرد قصاب</item>
+        <item>شهر ری</item>
+        <item>پالایشگاه</item>
+        <item>شاهد - باقرشهر</item>
+        <item>حرم مطهر امام خمینی</item>
+        <item>کهریزک</item>
+    </string-array>
+    <string-array name="secondLine">
+        <item>فرهنگسرا</item>
+        <item>تهران پارس</item>
+        <item>شهید باقری</item>
+        <item>دانشگاه علم و صنعت</item>
+        <item>سرسبز</item>
+        <item>جانبازان</item>
+        <item>فدک</item>
+        <item>سبلان</item>
+        <item>شهید مدنی</item>
+        <item>امام حسین</item>
+        <item>دروازه شمیران</item>
+        <item>بهارستان</item>
+        <item>ملت</item>
+        <item>امام خمینی</item>
+        <item>حسن آباد</item>
+        <item>دانشگاه امام علی</item>
+        <item>میدان حر</item>
+        <item>شهید نواب صفوی</item>
+        <item>شادمان</item>
+        <item>دانشگاه شریف</item>
+        <item>طرشت</item>
+        <item>تهران (صادقیه)</item>
+    </string-array>
+    <string-array name="thirdLine">
+        <item>قایم</item>
+        <item>شهید محلاتی</item>
+        <item>اقدسیه</item>
+        <item>نوبنیاد</item>
+        <item>حسین آباد</item>
+        <item>میدان هروی</item>
+        <item>شهید زین الدین</item>
+        <item>خواجه عبدالله انصاری</item>
+        <item>شهید صیاد شیرازی</item>
+        <item>شهید قدوسی</item>
+        <item>سهروردی</item>
+        <item>شهید بهشتی</item>
+        <item>میرزای شیرازی</item>
+        <item>میدان جهاد</item>
+        <item>میدان حضرت ولی عصر</item>
+        <item>تیاتر شهر</item>
+        <item>منیریه</item>
+        <item>مهدیه</item>
+        <item>راه آهن</item>
+        <item>جوادیه</item>
+        <item>زمزم</item>
+        <item>شهرک شریعتی</item>
+        <item>عبدل آباد</item>
+        <item>نعمت آباد</item>
+        <item>آزادگان</item>
+    </string-array>
+    <string-array name="forthLine">
+        <item>شهید کلاهدوز</item>
+        <item>نیروهوایی</item>
+        <item>نبرد</item>
+        <item>پیروزی</item>
+        <item>ابن سینا</item>
+        <item>میدان شهدا</item>
+        <item>دروازه شمیران</item>
+        <item>دروازه دولت</item>
+        <item>فردوسی</item>
+        <item>تیاتر شهر</item>
+        <item>میدان انقلاب اسلامی</item>
+        <item>توحید</item>
+        <item>شادمان</item>
+        <item>دکتر حبیب الله</item>
+        <item>استاد معین</item>
+        <item>میدان آزادی</item>
+        <item>بیمه</item>
+        <item>شهرک اکباتان</item>
+        <item>ارم سبز</item>
+    </string-array>
+    <string-array name="fifthLine">
+        <item>تهران (صادقیه)</item>
+        <item>ارم سبز</item>
+        <item>ورزشگاه آزادی</item>
+        <item>چیتگر</item>
+        <item>ایران خودرو</item>
+        <item>ورد آورد</item>
+        <item>گرم دره</item>
+        <item>اتمسفر</item>
+        <item>کرج</item>
+        <item>محمد شهر</item>
+        <item>گلشهر</item>
+    </string-array>
+    <string-array name="sixthLine">
+        <item>شهید ستاری</item>
+        <item>شهید اشرفی اصفهانی</item>
+        <item>یادگار امام</item>
+        <item>مرزداران</item>
+        <item>شهرک آزمایش</item>
+        <item>دانشگاه تربیت مدرس</item>
+        <item>امام حسین</item>
+        <item>میدان شهدا</item>
+        <item>امیرکبیر</item>
+        <item>شهید رضایی</item>
+        <item>بعثت</item>
+        <item>کیان شهر</item>
+        <item>دولت آباد</item>
+        <item>مرزداران</item>
+    </string-array>
+    <string-array name="seventhLine">
+        <item>میدان صنعت</item>
+        <item>برج میلاد تهران</item>
+        <item>بوستان گفتگو</item>
+        <item>دانشگاه تربیت مدرس</item>
+        <item>مدافعان سلامت</item>
+        <item>توحید</item>
+        <item>شهید نواب صفوی</item>
+        <item>رودکی</item>
+        <item>کمیل</item>
+        <item>بریانک</item>
+        <item>هلال احمر</item>
+        <item>مهدیه</item>
+        <item>میدان محمدیه</item>
+        <item>مولوی</item>
+        <item>میدان قیام</item>
+        <item>چهل تن دولاب</item>
+        <item>آهنگ</item>
+        <item>بسیج</item>
+    </string-array>
+
 </resources>
