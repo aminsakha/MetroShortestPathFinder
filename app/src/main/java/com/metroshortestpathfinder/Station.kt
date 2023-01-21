@@ -11,6 +11,6 @@ class Station(
     var isEndNode: Boolean = false
 ) {
     override fun toString(): String {
-        return "$name - > $id"
+        return "$name : $isStartNode -> $isIntersection"
     }
 }

@@ -9,10 +9,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initiateStations(this)
-
-        val source = findIdFromName("فرهنگسرا")!!
-        val dest = findIdFromName("شهید ستاری")!!
-
-        printShortestDistance(adj, source, dest)
+        Log.d("stations", "$stationList ")
+//        val source = findIdFromName("فرهنگسرا")!!
+//        val dest = findIdFromName("شهید سپهبد قاسم سلیمانی")!!
+//
+//        printShortestDistance(adj, source, dest)
     }
 }

@@ -2,7 +2,6 @@ package com.metroshortestpathfinder
 
 import LineNumber
 import android.content.Context
-import android.util.Log
 import java.util.ArrayList
 
 fun initiateStations(context: Context) {
@@ -92,6 +91,7 @@ fun initiateStations(context: Context) {
     drawEdges(lineFiveStationNames.toMutableList())
     drawEdges(lineSixStationNames.toMutableList())
     drawEdges(linSevenStationNames.toMutableList())
+    addExceptions()
 }
 
 private fun drawEdges(list: MutableList<String>) {
@@ -113,4 +113,42 @@ private fun drawEdges(list: MutableList<String>) {
 
 fun findStationFromId(id: Int): Station? {
     return stationList.find { it.id == id }
+}
+private fun addExceptions(){
+    //line 1
+    stationList.find { it.name=="تجریش" }?.isStartNode=true
+    stationList.find { it.name=="شهید بهشتی" }?.isIntersection=true
+    stationList.find { it.name=="دروازه دولت" }?.isIntersection=true
+    stationList.find { it.name=="امام خمینی" }?.isIntersection=true
+    stationList.find { it.name=="میدان محمدیه" }?.isIntersection=true
+    stationList.find { it.name=="کهریزک" }?.isEndNode=true
+    //line 2
+    stationList.find { it.name=="فرهنگسرا" }?.isStartNode=true
+    stationList.find { it.name=="امام حسین" }?.isIntersection=true
+    stationList.find { it.name=="امام حسین" }?.isIntersection=true
+    stationList.find { it.name=="دروازه شمیران" }?.isIntersection=true
+    stationList.find { it.name=="شهید نواب صفوی" }?.isIntersection=true
+    stationList.find { it.name=="شادمان" }?.isIntersection=true
+    stationList.find { it.name=="تهران (صادقیه)" }?.isIntersection=true
+    //line 3
+    stationList.find { it.name=="قایم" }?.isStartNode=true
+    stationList.find { it.name=="تیاتر شهر" }?.isIntersection=true
+    stationList.find { it.name=="تیاتر شهر" }?.isIntersection=true
+    stationList.find { it.name=="مهدیه" }?.isIntersection=true
+    stationList.find { it.name=="آزادگان" }?.isEndNode=true
+    //line 4
+    stationList.find { it.name=="شهید کلاهدوز" }?.isStartNode=true
+    stationList.find { it.name=="میدان شهدا" }?.isIntersection=true
+    stationList.find { it.name=="توحید" }?.isIntersection=true
+    //line 5
+    stationList.find { it.name=="ارم سبز" }?.isStartNode=true
+    stationList.find { it.name=="شهید سپهبد قاسم سلیمانی" }?.isEndNode=true
+    //line 6
+    stationList.find { it.name=="شهید ستاری" }?.isStartNode=true
+    stationList.find { it.name=="دانشگاه تربیت مدرس" }?.isIntersection=true
+    stationList.find { it.name=="دولت آباد" }?.isEndNode=true
+    //line 7
+    stationList.find { it.name=="میدان صنعت" }?.isStartNode=true
+    stationList.find { it.name=="بسیج" }?.isEndNode=true
+
 }
