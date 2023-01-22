@@ -111,8 +111,8 @@ fun findIdFromName(name: String): Int? {
 }
 
 
-fun findStationFromId(id: Int): Station? {
-    return stationList.find { it.id == id }
+fun findStationFromId(id: Int): Station {
+    return stationList.find { it.id == id }!!
 }
 
 //this func can be better

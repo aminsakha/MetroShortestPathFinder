@@ -3,23 +3,30 @@ package com.metroshortestpathfinder
 import android.util.Log
 
 class Result(idList: MutableList<Int>) {
-    private var resMessage = "شروع از ایستگاه "
+    private val resList = mutableListOf<String>()
+    private var resMessage = "حرکت از ایستگاه "
 
     init {
+        resList.add("حرکت از ایستگاه ")
         for (i in idList.indices) {
-            if (findStationFromId(idList[i])?.isIntersection!!) {
+            if (findStationFromId(idList[i]).isIntersection) {
                 try {
-                    resMessage += findStationFromId(idList[i])?.name
-                    resMessage += " به سمت " + getDirection(idList[i], idList[i + 1]) + " سپس "
+                    if (resList.contains(getDirection(idList[i], idList[i + 1])) ) {
+                        resList.add(findStationFromId(idList[i]).name)
+                        continue
+                    }
+                    resList.add(findStationFromId(idList[i]).name)
+                    resList.add(" به سمت ")
+                    resList.add(getDirection(idList[i], idList[i + 1]))
                     continue
                 } catch (_: IndexOutOfBoundsException) {
                 }
             }
-            resMessage += " " + findStationFromId(idList[i])?.name + " سپس \n"
+            resList.add(findStationFromId(idList[i]).name)
         }
     }
 
     fun printOutPut() {
-        Log.d("output", resMessage)
+        Log.d("output", resList.toString())
     }
 }
