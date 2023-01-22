@@ -1,11 +1,11 @@
 package com.metroshortestpathfinder
 
-import LineNumber
+import com.metroshortestpathfinder.line.Line
 
 class Station(
     var name: String,
     var id: Int,
-    var lineNum: LineNumber,
+    var lineNum: Line,
     var isIntersection: Boolean = false,
     var isStartNode: Boolean = false,
     var isEndNode: Boolean = false

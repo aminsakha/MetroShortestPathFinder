@@ -1,8 +1,7 @@
 package com.metroshortestpathfinder
 
-import LineNumber
 import android.content.Context
-import java.util.ArrayList
+import com.metroshortestpathfinder.line.*
 
 fun initiateStations(context: Context) {
 
@@ -10,7 +9,7 @@ fun initiateStations(context: Context) {
     // initiate stations of line one
     val lineOneStationNames = context.resources.getStringArray(R.array.firstLine)
     for (i in lineOneStationNames.indices) {
-        stationList.add(Station(lineOneStationNames[i], ++currentId, LineNumber.ONE))
+        stationList.add(Station(lineOneStationNames[i], ++currentId, LineOne(context)))
     }
     // initiate stations of line two
     val lineTwoStationNames = context.resources.getStringArray(R.array.secondLine)
@@ -20,7 +19,7 @@ fun initiateStations(context: Context) {
                 Station(
                     lineTwoStationNames[i],
                     ++currentId,
-                    LineNumber.TWO
+                    LineTwo(context)
                 )
             )
     }
@@ -32,7 +31,7 @@ fun initiateStations(context: Context) {
                 Station(
                     lineThreeStationNames[i],
                     ++currentId,
-                    LineNumber.THREE
+                    LineThree(context)
                 )
             )
     }
@@ -44,7 +43,7 @@ fun initiateStations(context: Context) {
                 Station(
                     lineFourStationNames[i],
                     ++currentId,
-                    LineNumber.FOUR
+                    LineFour(context)
                 )
             )
     }
@@ -56,7 +55,7 @@ fun initiateStations(context: Context) {
                 Station(
                     lineFiveStationNames[i],
                     ++currentId,
-                    LineNumber.FIVE
+                    LineFIve(context)
                 )
             )
     }
@@ -68,7 +67,7 @@ fun initiateStations(context: Context) {
                 Station(
                     lineSixStationNames[i],
                     ++currentId,
-                    LineNumber.SIX
+                    LineSix(context)
                 )
             )
     }
@@ -80,7 +79,7 @@ fun initiateStations(context: Context) {
                 Station(
                     linSevenStationNames[i],
                     ++currentId,
-                    LineNumber.SEVEN
+                    LineSeven(context)
                 )
             )
     }
@@ -91,7 +90,7 @@ fun initiateStations(context: Context) {
     drawEdges(lineFiveStationNames.toMutableList())
     drawEdges(lineSixStationNames.toMutableList())
     drawEdges(linSevenStationNames.toMutableList())
-    addExceptions()
+    labelIntersections()
 }
 
 private fun drawEdges(list: MutableList<String>) {
@@ -107,48 +106,35 @@ private fun drawEdges(list: MutableList<String>) {
 
 }
 
- fun findIdFromName(name: String): Int? {
+fun findIdFromName(name: String): Int? {
     return stationList.find { it.name == name }?.id
 }
+
 
 fun findStationFromId(id: Int): Station? {
     return stationList.find { it.id == id }
 }
-private fun addExceptions(){
-    //line 1
-    stationList.find { it.name=="تجریش" }?.isStartNode=true
-    stationList.find { it.name=="شهید بهشتی" }?.isIntersection=true
-    stationList.find { it.name=="دروازه دولت" }?.isIntersection=true
-    stationList.find { it.name=="امام خمینی" }?.isIntersection=true
-    stationList.find { it.name=="میدان محمدیه" }?.isIntersection=true
-    stationList.find { it.name=="کهریزک" }?.isEndNode=true
-    //line 2
-    stationList.find { it.name=="فرهنگسرا" }?.isStartNode=true
-    stationList.find { it.name=="امام حسین" }?.isIntersection=true
-    stationList.find { it.name=="امام حسین" }?.isIntersection=true
-    stationList.find { it.name=="دروازه شمیران" }?.isIntersection=true
-    stationList.find { it.name=="شهید نواب صفوی" }?.isIntersection=true
-    stationList.find { it.name=="شادمان" }?.isIntersection=true
-    stationList.find { it.name=="تهران (صادقیه)" }?.isIntersection=true
-    //line 3
-    stationList.find { it.name=="قایم" }?.isStartNode=true
-    stationList.find { it.name=="تیاتر شهر" }?.isIntersection=true
-    stationList.find { it.name=="تیاتر شهر" }?.isIntersection=true
-    stationList.find { it.name=="مهدیه" }?.isIntersection=true
-    stationList.find { it.name=="آزادگان" }?.isEndNode=true
-    //line 4
-    stationList.find { it.name=="شهید کلاهدوز" }?.isStartNode=true
-    stationList.find { it.name=="میدان شهدا" }?.isIntersection=true
-    stationList.find { it.name=="توحید" }?.isIntersection=true
-    //line 5
-    stationList.find { it.name=="ارم سبز" }?.isStartNode=true
-    stationList.find { it.name=="شهید سپهبد قاسم سلیمانی" }?.isEndNode=true
-    //line 6
-    stationList.find { it.name=="شهید ستاری" }?.isStartNode=true
-    stationList.find { it.name=="دانشگاه تربیت مدرس" }?.isIntersection=true
-    stationList.find { it.name=="دولت آباد" }?.isEndNode=true
-    //line 7
-    stationList.find { it.name=="میدان صنعت" }?.isStartNode=true
-    stationList.find { it.name=="بسیج" }?.isEndNode=true
 
+//this func can be better
+private fun labelIntersections() {
+    //line 1
+    stationList.find { it.name == "شهید بهشتی" }?.isIntersection = true
+    stationList.find { it.name == "دروازه دولت" }?.isIntersection = true
+    stationList.find { it.name == "امام خمینی" }?.isIntersection = true
+    stationList.find { it.name == "میدان محمدیه" }?.isIntersection = true
+    //line 2
+    stationList.find { it.name == "امام حسین" }?.isIntersection = true
+    stationList.find { it.name == "دروازه شمیران" }?.isIntersection = true
+    stationList.find { it.name == "شهید نواب صفوی" }?.isIntersection = true
+    stationList.find { it.name == "شادمان" }?.isIntersection = true
+    stationList.find { it.name == "تهران (صادقیه)" }?.isIntersection = true
+    //line 3
+    stationList.find { it.name == "تیاتر شهر" }?.isIntersection = true
+    stationList.find { it.name == "مهدیه" }?.isIntersection = true
+    //line 4
+    stationList.find { it.name == "میدان شهدا" }?.isIntersection = true
+    stationList.find { it.name == "توحید" }?.isIntersection = true
+    stationList.find { it.name == "ارم سبز" }?.isIntersection = true
+    //line 6
+    stationList.find { it.name == "دانشگاه تربیت مدرس" }?.isIntersection = true
 }

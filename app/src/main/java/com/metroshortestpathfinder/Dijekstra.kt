@@ -36,12 +36,15 @@ fun printShortestDistance(
 
     // Print distance
     println("Shortest path length is: " + dist[dest])
-
+    val resList = mutableListOf<Int>()
     // Print path
     println("Path is ::")
     for (i in path.indices.reversed()) {
-        Log.d("stations", findStationFromId(path[i])?.name + " ")
+        resList.add(path[i])
+       // Log.d("stations", findStationFromId(path[i])?.name + " ")
     }
+    lastResult = Result(resList)
+    lastResult!!.printOutPut()
 }
 
 private fun bfs(
@@ -74,7 +77,6 @@ private fun bfs(
     dist[src] = 0
     queue.add(src)
 
-    // com.metroshortestpathfinder.bfs Algorithm
     while (!queue.isEmpty()) {
         val u = queue.remove()
         for (i in adj[u].indices) {
