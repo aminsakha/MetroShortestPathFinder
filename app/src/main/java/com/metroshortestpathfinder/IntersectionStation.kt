@@ -101,7 +101,7 @@ fun getDirection(currId: Int, nextId: Int): String {
                 "مدافعان سلامت" -> return "میدان صنعت"
                 "شهید نواب صفوی" -> return "بسیج"
                 "شادمان" -> return "ارم سبز"
-                "میدانقلاب" -> return "شهید کلاهدوز"
+                "میدان انقلاب اسلامی" -> return "شهید کلاهدوز"
             }
         }
         "ارم سبز" -> {
@@ -120,5 +120,5 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
     }
-    return "null"
+    return "غلط"
 }
