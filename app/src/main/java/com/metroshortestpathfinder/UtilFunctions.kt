@@ -16,40 +16,64 @@ fun initiateStations(context: Context) {
                 context.packageName
             )
         )
-        for (stationName in curLineStationNames)
-            stationList.add(Station(++currentId, stationName, i))
+        for (stationIndex in curLineStationNames.indices) {
+            try {
+                stationList.add(Station(++currentId, curLineStationNames[stationIndex], i))
+                if (stationList.last().lineNum == stationList[stationList.lastIndex - 1].lineNum) {
+                    graph.addEdge(
+                        stationList.last().id,
+                        stationList[stationList.lastIndex - 1].id,
+                        1
+                    )
+                    graph.addEdge(
+                        stationList[stationList.lastIndex - 1].id,
+                        stationList.last().id,
+                        1
+                    )
+                }
+
+            } catch (_: Exception) {
+            }
+        }
     }
+    connectDupIntersections()
 }
 
-fun findIdFromName(name: String): Int? {
-    return stationList.find { it.name == name }?.id
+fun findIdFromName(name: String): MutableList<Int>? {
+    val res = mutableListOf<Int>()
+    stationList.forEach {
+        if (it.name == name)
+            res.add(it.id)
+    }
+    return res
 }
 
-
-fun findStationFromId(id: Int): Station {
-    return stationList.find { it.id == id }!!
+fun findAndConnect(stationName: String) {
+    val foundedNames = findIdFromName(stationName)
+    graph.addEdge(foundedNames!![0], foundedNames[1], 2)
+    graph.addEdge(foundedNames!![1], foundedNames[0], 2)
 }
 
-//this func can be better
-private fun labelIntersections() {
-    //line 1
-    stationList.find { it.name == "شهید بهشتی" }?.isIntersection = true
-    stationList.find { it.name == "دروازه دولت" }?.isIntersection = true
-    stationList.find { it.name == "امام خمینی" }?.isIntersection = true
-    stationList.find { it.name == "میدان محمدیه" }?.isIntersection = true
-    //line 2
-    stationList.find { it.name == "امام حسین" }?.isIntersection = true
-    stationList.find { it.name == "دروازه شمیران" }?.isIntersection = true
-    stationList.find { it.name == "شهید نواب صفوی" }?.isIntersection = true
-    stationList.find { it.name == "شادمان" }?.isIntersection = true
-    stationList.find { it.name == "تهران (صادقیه)" }?.isIntersection = true
-    //line 3
-    stationList.find { it.name == "تیاتر شهر" }?.isIntersection = true
-    stationList.find { it.name == "مهدیه" }?.isIntersection = true
-    //line 4
-    stationList.find { it.name == "میدان شهدا" }?.isIntersection = true
-    stationList.find { it.name == "توحید" }?.isIntersection = true
-    stationList.find { it.name == "ارم سبز" }?.isIntersection = true
-    //line 6
-    stationList.find { it.name == "دانشگاه تربیت مدرس" }?.isIntersection = true
+fun findStationNameFromId(id: Int): String {
+    var res = stationList.find { it.id == id }?.name!!
+//    res += " : " + stationList.find { it.id == id }!!.id
+    return res
+}
+
+private fun connectDupIntersections() {
+    findAndConnect("شهید بهشتی")
+    findAndConnect("دروازه دولت")
+    findAndConnect("امام خمینی")
+    findAndConnect("میدان محمدیه")
+    findAndConnect("امام حسین")
+    findAndConnect("دروازه شمیران")
+    findAndConnect("شهید نواب صفوی")
+    findAndConnect("شادمان")
+    findAndConnect("تهران (صادقیه)")
+    findAndConnect("تیاتر شهر")
+    findAndConnect("مهدیه")
+    findAndConnect("میدان شهدا")
+    findAndConnect("توحید")
+    findAndConnect("ارم سبز")
+    findAndConnect("دانشگاه تربیت مدرس")
 }

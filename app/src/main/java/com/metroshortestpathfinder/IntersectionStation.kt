@@ -2,9 +2,9 @@ package com.metroshortestpathfinder
 
 
 fun getDirection(currId: Int, nextId: Int): String {
-    when (findStationFromId(currId)?.name) {
+    when (findStationNameFromId(currId)) {
         "شهید بهشتی" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "سهروردی" -> return "قایم"
                 "شهید مفتح" -> return "کهریزک"
                 "میرزای شیرازی" -> return "قایم"
@@ -12,7 +12,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
         "دروازه دولت" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "دروازه شمیران" -> return "شهید کلاهدوز"
                 "سعدی" -> return "کهریزک"
                 "فردوسی" -> return "ارم سبز"
@@ -20,7 +20,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
         "امام خمینی" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "ملت" -> return "فرهنگسرا"
                 "پانزده خرداد" -> return "کهریزک"
                 "حسن آباد" -> return "تهران صادقیه"
@@ -28,7 +28,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
         "میدان محمدیه" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "مهدیه" -> return "میدان صنعت"
                 "مولوی" -> return "بسیج"
                 "شوش" -> return "ارم سبز"
@@ -36,7 +36,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
         "امام حسین" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "میدان شهدا" -> return "دولت آباد"
                 "دروازه شمیران" -> return "ارم سبز"
                 "شهید مدنی" -> return "فرهنگسرا"
@@ -44,7 +44,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
         "دروازه شمیران" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "دروازه دولت" -> return "ارم سبز"
                 "بهارستان" -> return "تهران (صادقیه)"
                 "امام حسین" -> return "فرهنگسرا"
@@ -52,7 +52,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
         "شهید نواب صفوی" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "شادمان" -> return "تهران (صادقیه)"
                 "میدان حر" -> return "فرهنگسرا"
                 "رودکی" -> return "بسیج"
@@ -60,7 +60,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
         "شادمان" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "دانشگاه شریف" -> return "تهران (صادقیه)"
                 "شهید نواب صفوی" -> return "فرهنگسرا"
                 "دکتر حبیب الله" -> return "ارم سبز"
@@ -68,20 +68,20 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
         "تهران (صادقیه)" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "ارم سبز" -> return "شهید سپهبد قاسم سلیمانی"
                 "طرشت" -> return "فرهنگسرا"
             }
         }
         "تیاتر شهر" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "منیریه" -> return "آزادگان"
                 "میدان انقلاب" -> return "ارم سبز"
                 "فردوسی" -> return "شهید کلاهدوز"
             }
         }
         "مهدیه" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "هلال احمر" -> return "میدان صنعت"
                 "میدان محمدیه" -> return "بسیج"
                 "راه آهن" -> return "آزادگان"
@@ -89,7 +89,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
         "میدان شهدا" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "امیرکبیر" -> return "دولت آباد"
                 "امام حسین" -> return "شهید ستاری"
                 "دروازه شمیران" -> return "ارم سبز"
@@ -97,7 +97,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
         "توحید" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "مدافعان سلامت" -> return "میدان صنعت"
                 "شهید نواب صفوی" -> return "بسیج"
                 "شادمان" -> return "ارم سبز"
@@ -105,14 +105,14 @@ fun getDirection(currId: Int, nextId: Int): String {
             }
         }
         "ارم سبز" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "ورزشگاه آزادی" -> return "شهید سپهبد قاسم سلیمانی"
                 "تهران صادقیه" -> return "فرهنگسرا"
                 "شهرک اکباتان" -> return "شهید کلاهدوز"
             }
         }
         "دانشگاه تربیت مدرس" -> {
-            when (findStationFromId(nextId)?.name) {
+            when (findStationNameFromId(nextId)) {
                 "شهرک آزمایش" -> return "شهید ستاری"
                 "مدافعان سلامت" -> return "بسیج"
                 "بوستان گفتگو" -> return "میدان صنعت"

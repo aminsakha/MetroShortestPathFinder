@@ -1,17 +1,20 @@
 package com.metroshortestpathfinder;
 
+import static com.metroshortestpathfinder.UtilFunctionsKt.findStationNameFromId;
+
+import android.util.Log;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Vector;
 
 public class Graph {
-    int V;
+    int V = 139;
     Vector<Integer>[] adj;
 
     static int level;
 
-    Graph(int V) {
-        this.V = V;
+    Graph() {
         this.adj = new Vector[2 * V];
 
         for (int i = 0; i < 2 * V; i++)
@@ -33,11 +36,9 @@ public class Graph {
 
     public int printShortestPath(int[] parent, int s, int d) {
         level = 0;
-
         // If we reached root of shortest path tree
         if (parent[s] == -1) {
-            System.out.printf("Shortest Path between" +
-                    "%d and %d is %s ", s, d, s);
+            //Log.d("output", "Shortest Path between" + d + "and" + d + " is " + findStationNameFromId(s));
             return level;
         }
 
@@ -45,7 +46,7 @@ public class Graph {
 
         level++;
         if (s < this.V)
-            System.out.printf("%d ", s);
+            Log.d("output", findStationNameFromId(s));
 
         return level;
     }
