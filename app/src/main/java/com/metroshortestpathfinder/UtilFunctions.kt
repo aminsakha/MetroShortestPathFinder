@@ -1,109 +1,24 @@
 package com.metroshortestpathfinder
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import com.metroshortestpathfinder.line.*
 
+@SuppressLint("DiscouragedApi")
 fun initiateStations(context: Context) {
-
     var currentId = -1
-    // initiate stations of line one
-    val lineOneStationNames = context.resources.getStringArray(R.array.firstLine)
-    for (i in lineOneStationNames.indices) {
-        stationList.add(Station(lineOneStationNames[i], ++currentId, LineOne(context)))
-    }
-    // initiate stations of line two
-    val lineTwoStationNames = context.resources.getStringArray(R.array.secondLine)
-    for (i in lineTwoStationNames.indices) {
-        if (!stationList.any { station: Station -> station.name == lineTwoStationNames[i] })
-            stationList.add(
-                Station(
-                    lineTwoStationNames[i],
-                    ++currentId,
-                    LineTwo(context)
-                )
+    for (i in 1..7) {
+        val curLineStationNames = context.resources.getStringArray(
+            context.resources.getIdentifier(
+                "line$i",
+                "array",
+                context.packageName
             )
+        )
+        for (stationName in curLineStationNames)
+            stationList.add(Station(++currentId, stationName, i))
     }
-    // initiate stations of line three
-    val lineThreeStationNames = context.resources.getStringArray(R.array.thirdLine)
-    for (i in lineThreeStationNames.indices) {
-        if (!stationList.any { station: Station -> station.name == lineThreeStationNames[i] })
-            stationList.add(
-                Station(
-                    lineThreeStationNames[i],
-                    ++currentId,
-                    LineThree(context)
-                )
-            )
-    }
-    // initiate stations of line four
-    val lineFourStationNames = context.resources.getStringArray(R.array.forthLine)
-    for (i in lineFourStationNames.indices) {
-        if (!stationList.any { station: Station -> station.name == lineFourStationNames[i] })
-            stationList.add(
-                Station(
-                    lineFourStationNames[i],
-                    ++currentId,
-                    LineFour(context)
-                )
-            )
-    }
-    // initiate stations of line five
-    val lineFiveStationNames = context.resources.getStringArray(R.array.fifthLine)
-    for (i in lineFiveStationNames.indices) {
-        if (!stationList.any { station: Station -> station.name == lineFiveStationNames[i] })
-            stationList.add(
-                Station(
-                    lineFiveStationNames[i],
-                    ++currentId,
-                    LineFIve(context)
-                )
-            )
-    }
-    // initiate stations of line six
-    val lineSixStationNames = context.resources.getStringArray(R.array.sixthLine)
-    for (i in lineSixStationNames.indices) {
-        if (!stationList.any { station: Station -> station.name == lineSixStationNames[i] })
-            stationList.add(
-                Station(
-                    lineSixStationNames[i],
-                    ++currentId,
-                    LineSix(context)
-                )
-            )
-    }
-    // initiate stations of line seven
-    val linSevenStationNames = context.resources.getStringArray(R.array.seventhLine)
-    for (i in linSevenStationNames.indices) {
-        if (!stationList.any { station: Station -> station.name == linSevenStationNames[i] })
-            stationList.add(
-                Station(
-                    linSevenStationNames[i],
-                    ++currentId,
-                    LineSeven(context)
-                )
-            )
-    }
-    drawEdges(lineOneStationNames.toMutableList())
-    drawEdges(lineTwoStationNames.toMutableList())
-    drawEdges(lineThreeStationNames.toMutableList())
-    drawEdges(lineFourStationNames.toMutableList())
-    drawEdges(lineFiveStationNames.toMutableList())
-    drawEdges(lineSixStationNames.toMutableList())
-    drawEdges(linSevenStationNames.toMutableList())
-    labelIntersections()
-}
-
-private fun drawEdges(list: MutableList<String>) {
-    for (i in 0 until stationList.size) {
-        adj.add(ArrayList())
-    }
-    for (i in list.indices) {
-        try {
-            addEdge(findIdFromName(list[i])!!, findIdFromName(list[i + 1])!!)
-        } catch (_: IndexOutOfBoundsException) {
-        }
-    }
-
 }
 
 fun findIdFromName(name: String): Int? {

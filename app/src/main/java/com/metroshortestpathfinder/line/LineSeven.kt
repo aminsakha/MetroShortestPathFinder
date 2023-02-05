@@ -6,7 +6,7 @@ import com.metroshortestpathfinder.stationList
 
 class LineSeven (context: Context) : Line(context) {
     override var stationNames =
-        context.resources.getStringArray(R.array.seventhLine).toMutableList()
+        context.resources.getStringArray(R.array.line7).toMutableList()
     override var startStation = stationNames.find { it == "میدان صنعت" }!!
     override var endStation = stationNames.find { it == "بسیج" }!!
 }

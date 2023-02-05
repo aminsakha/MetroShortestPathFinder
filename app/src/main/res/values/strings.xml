@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">MetroShortestPathFinder</string>
-    <string-array name="firstLine">
+    <string-array name="line1">
         <item>تجریش</item>
         <item>قیطریه</item>
         <item>شهید صدر</item>
@@ -32,7 +32,7 @@
         <item>حرم مطهر امام خمینی</item>
         <item>کهریزک</item>
     </string-array>
-    <string-array name="secondLine">
+    <string-array name="line2">
         <item>فرهنگسرا</item>
         <item>تهران پارس</item>
         <item>شهید باقری</item>
@@ -56,7 +56,7 @@
         <item>طرشت</item>
         <item>تهران (صادقیه)</item>
     </string-array>
-    <string-array name="thirdLine">
+    <string-array name="line3">
         <item>قایم</item>
         <item>شهید محلاتی</item>
         <item>اقدسیه</item>
@@ -83,7 +83,7 @@
         <item>نعمت آباد</item>
         <item>آزادگان</item>
     </string-array>
-    <string-array name="forthLine">
+    <string-array name="line4">
         <item>شهید کلاهدوز</item>
         <item>نیروهوایی</item>
         <item>نبرد</item>
@@ -104,7 +104,7 @@
         <item>شهرک اکباتان</item>
         <item>ارم سبز</item>
     </string-array>
-    <string-array name="fifthLine">
+    <string-array name="line5">
         <item>تهران (صادقیه)</item>
         <item>ارم سبز</item>
         <item>ورزشگاه آزادی</item>
@@ -118,7 +118,7 @@
         <item>گلشهر</item>
         <item>شهید سپهبد قاسم سلیمانی</item>
     </string-array>
-    <string-array name="sixthLine">
+    <string-array name="line6">
         <item>شهید ستاری</item>
         <item>شهید اشرفی اصفهانی</item>
         <item>یادگار امام</item>
@@ -134,7 +134,7 @@
         <item>دولت آباد</item>
         <item>مرزداران</item>
     </string-array>
-    <string-array name="seventhLine">
+    <string-array name="line7">
         <item>میدان صنعت</item>
         <item>برج میلاد تهران</item>
         <item>بوستان گفتگو</item>
