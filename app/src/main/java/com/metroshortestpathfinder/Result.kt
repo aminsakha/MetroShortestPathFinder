@@ -1,32 +1,52 @@
-//package com.metroshortestpathfinder
-//
-//import android.util.Log
-//
-//class Result(idList: MutableList<Int>) {
-//    private val resList = mutableListOf<String>()
-//    private var resMessage = "حرکت از ایستگاه "
-//
-//    init {
-//        resList.add("حرکت از ایستگاه ")
-//        for (i in idList.indices) {
-//            if (findStationFromId(idList[i]).isIntersection) {
-//                try {
-//                    if (resList.contains(getDirection(idList[i], idList[i + 1])) ) {
-//                        resList.add(findStationFromId(idList[i]).name)
-//                        continue
-//                    }
-//                    resList.add(findStationFromId(idList[i]).name)
-//                    resList.add(" به سمت ")
-//                    resList.add(getDirection(idList[i], idList[i + 1]))
-//                    continue
-//                } catch (_: IndexOutOfBoundsException) {
-//                }
-//            }
-//            resList.add(findStationFromId(idList[i]).name)
-//        }
-//    }
-//
-//    fun printOutPut() {
-//        Log.d("output", resList.toString())
-//    }
-//}
+package com.metroshortestpathfinder
+
+import android.content.Context
+
+class Result(
+    context: Context,
+    private var startStationName: String,
+    private var destStationName: String
+) {
+    private val resList = mutableListOf<String>()
+    private val intersectionNames: Array<String> =
+        context.resources.getStringArray(R.array.intersections)
+
+    fun printUniqueResult(): MutableList<String> {
+        graph.findShortestPath(
+            findIdFromName(startStationName)!![0],
+            findIdFromName(destStationName)!![0]
+        )
+        resList.myAdd("حرکت از ایستگاه ")
+        resList.myAdd(startStationName)
+        resList.myAdd(" به سمت ")
+        resList.add(
+            findDirectionForStartStation(
+                findStationNameFromId(idListResult[0]),
+                findStationNameFromId(idListResult[1])
+            )
+        )
+
+        for (i in 1 until idListResult.size) {
+            val currStationName = findStationNameFromId(idListResult[i])
+            if (intersectionNames.contains(currStationName)) {
+                try {
+                    if (resList.contains(getDirection(idListResult[i], idListResult[i + 1]))) {
+                        resList.add(currStationName)
+                        continue
+                    }
+                    resList.add(currStationName)
+                    resList.add(" به سمت ")
+                    resList.add(getDirection(idListResult[i], idListResult[i + 1]))
+                    continue
+                } catch (_: IndexOutOfBoundsException) {
+                }
+            }
+            resList.add(currStationName)
+        }
+        return resList
+    }
+
+    fun selectBestBetweenTwoPaths() {
+
+    }
+}

@@ -3,12 +3,16 @@ package com.metroshortestpathfinder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.metroshortestpathfinder.Result
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initiateStations(this)
-        graph.findShortestPath(findIdFromName("میدان شهدا")!![0], findIdFromName("شهید مدنی")!![0])
+        val startNodeName = "سهروردی"
+        val destNodeName = "دروازه شمیران"
+        val res = Result(this, startNodeName, destNodeName)
+        Log.d("output", res.printUniqueResult().toString())
     }
 }

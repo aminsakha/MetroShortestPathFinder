@@ -155,4 +155,24 @@
         <item>بسیج</item>
     </string-array>
 
+    <string-array name="intersections">
+        <item>شهید بهشتی</item>
+        <item>دروازه دولت</item>
+        <item>امام خمینی</item>
+        <item>میدان محمدیه</item>
+        <item>امام حسین</item>
+        <item>دروازه شمیران</item>
+        <item>شهید نواب صفوی</item>
+        <item>شادمان</item>
+        <item>تهران (صادقیه)</item>
+        <item>تیاتر شهر</item>
+        <item>مهدیه</item>
+        <item>شادمان</item>
+        <item>میدان شهدا</item>
+        <item>توحید</item>
+        <item>ارم سبز</item>
+        <item>دانشگاه تربیت مدرس</item>
+    </string-array>
+
+
 </resources>

@@ -31,7 +31,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             when (findStationNameFromId(nextId)) {
                 "مهدیه" -> return "میدان صنعت"
                 "مولوی" -> return "بسیج"
-                "شوش" -> return "ارم سبز"
+                "شوش" -> return "کهریزک"
                 "خیام" -> return "تجریش"
             }
         }
@@ -76,7 +76,7 @@ fun getDirection(currId: Int, nextId: Int): String {
         "تیاتر شهر" -> {
             when (findStationNameFromId(nextId)) {
                 "منیریه" -> return "آزادگان"
-                "میدان انقلاب" -> return "ارم سبز"
+                "میدان انقلاب اسلامی" -> return "ارم سبز"
                 "فردوسی" -> return "شهید کلاهدوز"
             }
         }

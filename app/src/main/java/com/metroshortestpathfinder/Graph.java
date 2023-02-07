@@ -38,6 +38,7 @@ public class Graph {
         level = 0;
         // If we reached root of shortest path tree
         if (parent[s] == -1) {
+            DbKt.getIdListResult().add(s);
             //Log.d("output", "Shortest Path between" + d + "and" + d + " is " + findStationNameFromId(s));
             return level;
         }
@@ -45,9 +46,17 @@ public class Graph {
         printShortestPath(parent, parent[s], d);
 
         level++;
-        if (s < this.V)
-            Log.d("output", findStationNameFromId(s));
-
+        if (s < this.V) {
+            boolean flag = true;
+            for (Integer integer : DbKt.getIdListResult()) {
+                if (findStationNameFromId(integer).equals(findStationNameFromId(s))) {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag)
+                DbKt.getIdListResult().add(s);
+        }
         return level;
     }
 

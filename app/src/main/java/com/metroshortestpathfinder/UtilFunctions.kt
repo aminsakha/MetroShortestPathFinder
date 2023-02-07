@@ -2,7 +2,6 @@ package com.metroshortestpathfinder
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
 import com.metroshortestpathfinder.line.*
 
 @SuppressLint("DiscouragedApi")
@@ -31,12 +30,11 @@ fun initiateStations(context: Context) {
                         1
                     )
                 }
-
             } catch (_: Exception) {
             }
         }
     }
-    connectDupIntersections()
+    connectDupIntersections(context)
 }
 
 fun findIdFromName(name: String): MutableList<Int>? {
@@ -51,7 +49,7 @@ fun findIdFromName(name: String): MutableList<Int>? {
 fun findAndConnect(stationName: String) {
     val foundedNames = findIdFromName(stationName)
     graph.addEdge(foundedNames!![0], foundedNames[1], 2)
-    graph.addEdge(foundedNames!![1], foundedNames[0], 2)
+    graph.addEdge(foundedNames[1], foundedNames[0], 2)
 }
 
 fun findStationNameFromId(id: Int): String {
@@ -60,20 +58,37 @@ fun findStationNameFromId(id: Int): String {
     return res
 }
 
-private fun connectDupIntersections() {
-    findAndConnect("شهید بهشتی")
-    findAndConnect("دروازه دولت")
-    findAndConnect("امام خمینی")
-    findAndConnect("میدان محمدیه")
-    findAndConnect("امام حسین")
-    findAndConnect("دروازه شمیران")
-    findAndConnect("شهید نواب صفوی")
-    findAndConnect("شادمان")
-    findAndConnect("تهران (صادقیه)")
-    findAndConnect("تیاتر شهر")
-    findAndConnect("مهدیه")
-    findAndConnect("میدان شهدا")
-    findAndConnect("توحید")
-    findAndConnect("ارم سبز")
-    findAndConnect("دانشگاه تربیت مدرس")
+private fun connectDupIntersections(context: Context) {
+    context.resources.getStringArray(R.array.intersections).forEach {
+        findAndConnect(it)
+    }
+}
+
+fun findDirectionForStartStation(startNode: String, nextNode: String): String {
+    if (findStationFromName(startNode).id < findStationFromName(nextNode).id) {
+        when (findStationFromName(startNode).lineNum) {
+            1 -> return LineOne().endStation
+            2 -> return LineTwo().endStation
+            3 -> return LineThree().endStation
+            4 -> return LineFour().endStation
+            5 -> return LineFIve().endStation
+            6 -> return LineSix().endStation
+            7 -> return LineSeven().endStation
+        }
+    } else {
+        when (findStationFromName(startNode).lineNum) {
+            1 -> return LineOne().startStation
+            2 -> return LineTwo().startStation
+            3 -> return LineThree().startStation
+            4 -> return LineFour().startStation
+            5 -> return LineFIve().startStation
+            6 -> return LineSix().startStation
+            7 -> return LineSeven().startStation
+        }
+    }
+    return ""
+}
+
+fun findStationFromName(name: String): Station {
+    return stationList.find { it.name == name }!!
 }
