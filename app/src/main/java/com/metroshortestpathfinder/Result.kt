@@ -11,10 +11,13 @@ class Result(
     private val intersectionNames: Array<String> =
         context.resources.getStringArray(R.array.intersections)
 
-    fun printUniqueResult(): MutableList<String> {
+    private fun printUniqueResult(
+        whichWayForStartNode: Int,
+        whichWayForEndNode: Int
+    ): MutableList<String> {
         graph.findShortestPath(
-            findIdFromName(startStationName)!![0],
-            findIdFromName(destStationName)!![0]
+            findIdFromName(startStationName)!![whichWayForStartNode],
+            findIdFromName(destStationName)!![whichWayForEndNode]
         )
         resList.myAdd("حرکت از ایستگاه ")
         resList.myAdd(startStationName)
@@ -46,7 +49,51 @@ class Result(
         return resList
     }
 
-    fun selectBestBetweenTwoPaths() {
+    fun printResult(): MutableList<String> {
+        val path1 = Path(intersectionNames)
+        val path2 = Path(intersectionNames)
+        val path3 = Path(intersectionNames)
+        val path4 = Path(intersectionNames)
+        if (intersectionNames.contains(startStationName) && !intersectionNames.contains(
+                destStationName
+            )
+        ) {
+            path1.pathNames = printUniqueResult(0, 0)
+            path1.calculateRatio()
+            path2.pathNames = printUniqueResult(1, 0)
+            path2.calculateRatio()
+            return calculateBestPath(path1, path2).pathNames
+        } else if (!intersectionNames.contains(startStationName) && intersectionNames.contains(
+                destStationName
+            )
+        ) {
+            path1.pathNames.addAll(printUniqueResult(0, 0))
+            path1.calculateRatio()
+            path2.pathNames.addAll(printUniqueResult(0, 1))
+            path2.calculateRatio()
+            return calculateBestPath(path1, path2).pathNames
+        } else if (intersectionNames.contains(startStationName) && intersectionNames.contains(
+                destStationName
+            )
+        ) {
+            path1.pathNames = printUniqueResult(0, 0)
+            path1.calculateRatio()
+            path2.pathNames = printUniqueResult(1, 1)
+            path2.calculateRatio()
+            path3.pathNames = printUniqueResult(0, 1)
+            path3.calculateRatio()
+            path4.pathNames = printUniqueResult(1, 0)
+            path4.calculateRatio()
+            return calculateBestPath(path1, path2, path3, path4).pathNames
+        } else
+            return printUniqueResult(0, 0)
 
+
+    }
+
+    private fun calculateBestPath(vararg paths: Path): Path {
+        val a = paths[0]
+        val b = paths[1]
+        return paths.maxBy { it.ratio }
     }
 }
