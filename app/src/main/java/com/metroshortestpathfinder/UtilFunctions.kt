@@ -60,9 +60,10 @@ private fun connectDupIntersections(context: Context) {
     }
 }
 
-fun findDirectionForStartStation(startNode: String, nextNode: String): String {
-    if (findStationFromName(startNode).id < findStationFromName(nextNode).id) {
-        when (findStationFromName(startNode).lineNum) {
+fun findDirectionForStartStation(context: Context, startId: Int, nextId: Int): String {
+    val resPair = startWayFinderHelper(context, startId, nextId)
+    if (resPair.second) {
+        when (resPair.first) {
             1 -> return LineOne().endStation
             2 -> return LineTwo().endStation
             3 -> return LineThree().endStation
@@ -72,7 +73,7 @@ fun findDirectionForStartStation(startNode: String, nextNode: String): String {
             7 -> return LineSeven().endStation
         }
     } else {
-        when (findStationFromName(startNode).lineNum) {
+        when (resPair.first) {
             1 -> return LineOne().startStation
             2 -> return LineTwo().startStation
             3 -> return LineThree().startStation
@@ -85,4 +86,30 @@ fun findDirectionForStartStation(startNode: String, nextNode: String): String {
     return ""
 }
 
-fun findStationFromName(name: String) = stationList.find { it.name == name }!!
+private fun startWayFinderHelper(
+    context: Context,
+    startId: Int,
+    nextId: Int
+): Pair<Int, Boolean> {
+    for (i in 1..7) {
+        val curLineStationNames = context.resources.getStringArray(
+            context.resources.getIdentifier(
+                "line$i",
+                "array",
+                context.packageName
+            )
+        )
+        if (curLineStationNames.contains(findStationNameFromId(startId)) && curLineStationNames.contains(
+                findStationNameFromId(nextId)
+            )
+        ) {
+            return Pair(
+                i,
+                curLineStationNames.indexOf(findStationNameFromId(startId)) < curLineStationNames.indexOf(
+                    findStationNameFromId(nextId)
+                )
+            )
+        }
+    }
+    return Pair(0, false)
+}

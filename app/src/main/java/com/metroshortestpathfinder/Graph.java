@@ -34,16 +34,15 @@ public class Graph {
             adj[v].add(w); // Add w to v's list.
     }
 
-    public int printShortestPath(int[] parent, int s, int d) {
+    public int printShortestPath(Path path, int[] parent, int s, int d) {
         level = 0;
         // If we reached root of shortest path tree
         if (parent[s] == -1) {
             DbKt.getIdListResult().add(s);
-            //Log.d("output", "Shortest Path between" + d + "and" + d + " is " + findStationNameFromId(s));
             return level;
         }
 
-        printShortestPath(parent, parent[s], d);
+        printShortestPath(path, parent, parent[s], d);
 
         level++;
         if (s < this.V) {
@@ -51,6 +50,7 @@ public class Graph {
             for (Integer integer : DbKt.getIdListResult()) {
                 if (findStationNameFromId(integer).equals(findStationNameFromId(s))) {
                     flag = false;
+                    path.setRatio(path.getRatio() + 1);
                     break;
                 }
             }
@@ -66,7 +66,7 @@ public class Graph {
     // This function mainly does BFS and prints the
     // shortest path from src to dest. It is assumed
     // that weight of every edge is 1
-    public int findShortestPath(int src, int dest) {
+    public int findShortestPath(Path path, int src, int dest) {
         boolean[] visited = new boolean[2 * this.V];
         int[] parent = new int[2 * this.V];
 
@@ -89,7 +89,7 @@ public class Graph {
             int s = queue.peek();
 
             if (s == dest)
-                return printShortestPath(parent, s, dest);
+                return printShortestPath(path, parent, s, dest);
             queue.poll();
 
             // Get all adjacent vertices of the dequeued vertex s

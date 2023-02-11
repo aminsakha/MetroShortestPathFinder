@@ -10,8 +10,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initiateStations(this)
-        val startNodeName = "سهروردی"
-        val destNodeName = "میدان جهاد"
+        val startNodeName = "مهدیه"
+        val destNodeName = "میدان محمدیه"
         val res = Result(this, startNodeName, destNodeName)
         Log.d("output", res.printResult().toString())
     }
