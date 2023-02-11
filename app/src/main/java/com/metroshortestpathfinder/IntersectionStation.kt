@@ -7,7 +7,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             when (findStationNameFromId(nextId)) {
                 "سهروردی" -> return "قایم"
                 "شهید مفتح" -> return "کهریزک"
-                "میرزای شیرازی" -> return "قایم"
+                "میرزای شیرازی" -> return "آزادگان"
                 "مصلی امام خمینی" -> return "تجریش"
             }
         }
@@ -23,7 +23,7 @@ fun getDirection(currId: Int, nextId: Int): String {
             when (findStationNameFromId(nextId)) {
                 "ملت" -> return "فرهنگسرا"
                 "پانزده خرداد" -> return "کهریزک"
-                "حسن آباد" -> return "تهران صادقیه"
+                "حسن آباد" -> return "تهران (صادقیه)"
                 "سعدی" -> return "تجریش"
             }
         }
@@ -38,9 +38,9 @@ fun getDirection(currId: Int, nextId: Int): String {
         "امام حسین" -> {
             when (findStationNameFromId(nextId)) {
                 "میدان شهدا" -> return "دولت آباد"
-                "دروازه شمیران" -> return "ارم سبز"
+                "دروازه شمیران" -> return "تهران (صادقیه)"
                 "شهید مدنی" -> return "فرهنگسرا"
-                "دانشگاه تربیت مدرس" -> return "تجریش"
+                "دانشگاه تربیت مدرس" -> return "شهید ستاری"
             }
         }
         "دروازه شمیران" -> {
@@ -78,6 +78,7 @@ fun getDirection(currId: Int, nextId: Int): String {
                 "منیریه" -> return "آزادگان"
                 "میدان انقلاب اسلامی" -> return "ارم سبز"
                 "فردوسی" -> return "شهید کلاهدوز"
+                "میدان جهاد" -> return "قایم"
             }
         }
         "مهدیه" -> {
@@ -107,7 +108,7 @@ fun getDirection(currId: Int, nextId: Int): String {
         "ارم سبز" -> {
             when (findStationNameFromId(nextId)) {
                 "ورزشگاه آزادی" -> return "شهید سپهبد قاسم سلیمانی"
-                "تهران صادقیه" -> return "فرهنگسرا"
+                "تهران (صادقیه)" -> return "تهران (صادقیه)"
                 "شهرک اکباتان" -> return "شهید کلاهدوز"
             }
         }

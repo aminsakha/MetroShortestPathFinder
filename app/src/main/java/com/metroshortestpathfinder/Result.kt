@@ -16,8 +16,8 @@ class Result(
         whichWayForEndNode: Int
     ): MutableList<String> {
         graph.findShortestPath(
-            findIdFromName(startStationName)!![whichWayForStartNode],
-            findIdFromName(destStationName)!![whichWayForEndNode]
+            findIdFromName(startStationName)[whichWayForStartNode],
+            findIdFromName(destStationName)[whichWayForEndNode]
         )
         resList.myAdd("حرکت از ایستگاه ")
         resList.myAdd(startStationName)
@@ -91,9 +91,5 @@ class Result(
 
     }
 
-    private fun calculateBestPath(vararg paths: Path): Path {
-        val a = paths[0]
-        val b = paths[1]
-        return paths.maxBy { it.ratio }
-    }
+    private fun calculateBestPath(vararg paths: Path) = paths.maxBy { it.ratio }
 }

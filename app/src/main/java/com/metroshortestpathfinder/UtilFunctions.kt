@@ -37,7 +37,7 @@ fun initiateStations(context: Context) {
     connectDupIntersections(context)
 }
 
-fun findIdFromName(name: String): MutableList<Int>? {
+fun findIdFromName(name: String): MutableList<Int> {
     val res = mutableListOf<Int>()
     stationList.forEach {
         if (it.name == name)
@@ -52,11 +52,7 @@ fun findAndConnect(stationName: String) {
     graph.addEdge(foundedNames[1], foundedNames[0], 2)
 }
 
-fun findStationNameFromId(id: Int): String {
-    var res = stationList.find { it.id == id }?.name!!
-//    res += " : " + stationList.find { it.id == id }!!.id
-    return res
-}
+fun findStationNameFromId(id: Int) = stationList.find { it.id == id }?.name!!
 
 private fun connectDupIntersections(context: Context) {
     context.resources.getStringArray(R.array.intersections).forEach {
@@ -89,6 +85,4 @@ fun findDirectionForStartStation(startNode: String, nextNode: String): String {
     return ""
 }
 
-fun findStationFromName(name: String): Station {
-    return stationList.find { it.name == name }!!
-}
+fun findStationFromName(name: String) = stationList.find { it.name == name }!!
