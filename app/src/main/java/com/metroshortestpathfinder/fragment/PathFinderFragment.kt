@@ -7,8 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import com.metroshortestpathfinder.R
 import com.metroshortestpathfinder.Result
 import com.metroshortestpathfinder.databinding.FragmentPathFinderBinding
 import com.metroshortestpathfinder.initiateStations
@@ -56,6 +57,7 @@ class PathFinderFragment : Fragment() {
 
         binding.findPathBTN.setOnClickListener {
             val res = Result(requireContext(), startNodeName, destNodeName)
+
             Log.d("output", res.printResult().toString())
         }
     }
