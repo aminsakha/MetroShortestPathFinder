@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pathFinderFragment">
+
+    <fragment
+        android:id="@+id/mainMenu"
+        android:name="com.metroshortestpathfinder.fragment.MainMenu"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenu_to_pathFinderFragment"
+            app:destination="@id/pathFinderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pathFinderFragment"
+        android:name="com.metroshortestpathfinder.fragment.PathFinderFragment"
+        android:label="fragment_path_finder"
+        tools:layout="@layout/fragment_path_finder" />
+</navigation>
