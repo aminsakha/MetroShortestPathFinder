@@ -18,5 +18,14 @@
         android:id="@+id/pathFinderFragment"
         android:name="com.metroshortestpathfinder.fragment.PathFinderFragment"
         android:label="fragment_path_finder"
-        tools:layout="@layout/fragment_path_finder" />
+        tools:layout="@layout/fragment_path_finder" >
+        <action
+            android:id="@+id/action_pathFinderFragment_to_showResultPsthFragment"
+            app:destination="@id/showResultPsthFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/showResultPsthFragment"
+        android:name="com.metroshortestpathfinder.ShowResultPsthFragment"
+        android:label="fragment_show_result_psth"
+        tools:layout="@layout/fragment_show_result_psth" />
 </navigation>

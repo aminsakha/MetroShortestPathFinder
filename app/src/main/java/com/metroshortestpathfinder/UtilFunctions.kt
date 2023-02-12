@@ -48,7 +48,7 @@ fun findIdFromName(name: String): MutableList<Int> {
 
 fun findAndConnect(stationName: String) {
     val foundedNames = findIdFromName(stationName)
-    graph.addEdge(foundedNames!![0], foundedNames[1], 2)
+    graph.addEdge(foundedNames[0], foundedNames[1], 2)
     graph.addEdge(foundedNames[1], foundedNames[0], 2)
 }
 

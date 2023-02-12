@@ -17,6 +17,7 @@ class Result(
         path: Path
     ): MutableList<String> {
         val resList = mutableListOf<String>()
+
         graph.findShortestPath(
             path,
             findIdFromName(startStationName)[whichWayForStartNode],

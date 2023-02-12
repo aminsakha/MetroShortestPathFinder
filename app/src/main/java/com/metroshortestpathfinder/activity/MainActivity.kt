@@ -11,10 +11,5 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initiateStations(this)
-        val startNodeName = "مهدیه"
-        val destNodeName = "میدان محمدیه"
-        val res = Result(this, startNodeName, destNodeName)
-        Log.d("output", res.printResult().toString())
     }
 }
