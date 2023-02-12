@@ -35,11 +35,9 @@ class PathFinderFragment : Fragment() {
         }
         val adapter = ArrayAdapter(
             requireContext(),
-            android.R.layout.select_dialog_item,
+            android.R.layout.simple_list_item_1,
             stationNames.toList()
         )
-        binding.a1.threshold = 2
-        binding.a2.threshold = 2
         binding.a1.setAdapter(adapter)
         binding.a2.setAdapter(adapter)
         var startNodeName = ""
@@ -49,6 +47,9 @@ class PathFinderFragment : Fragment() {
         binding.a1.onItemClickListener = OnItemClickListener { arg0, arg1, arg2, arg3 ->
             startNodeName = arg0.getItemAtPosition(arg2).toString()
         }
+
+        binding.a2.setOnDismissListener {  }
+
         binding.a2.onItemClickListener = OnItemClickListener { arg0, arg1, arg2, arg3 ->
             destNodeName = arg0.getItemAtPosition(arg2).toString()
         }
